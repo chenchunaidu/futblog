@@ -16,11 +16,10 @@ const Stack: React.FC<StackProps> = ({
       direction={direction}
       sx={{
         ...sx,
-        "& > *": {
-          marginTop: spacing,
-        },
-        "& : first-child": {
-          marginTop: "0px",
+        "& : not(:first-child)": {
+          ...(direction === "column"
+            ? { marginTop: spacing }
+            : { marginLeft: spacing }),
         },
       }}
     >
