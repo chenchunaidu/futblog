@@ -15,6 +15,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
       header={<CustomHeader />}
       styles={(theme) => ({
         main: {
+          overflow: "scroll",
           backgroundColor:
             theme.colorScheme === "dark"
               ? theme.colors.dark[8]

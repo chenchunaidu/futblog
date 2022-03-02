@@ -1,11 +1,7 @@
-import { Header } from "@mantine/core";
+import Stack from "../common/Stack";
 
 const CustomHeader = () => {
-  return (
-    <Header height={60} padding="xs">
-      Something
-    </Header>
-  );
+  return <Stack sx={{ padding: "md" }}>Something</Stack>;
 };
 
 export default CustomHeader;
