@@ -1,7 +1,7 @@
 import React from "react";
 import { Box } from "@mantine/core";
 import { DefaultProps } from "@mantine/styles";
-import useStyles from "./Flex.styLes";
+import useStyles from "./Flex.styles";
 
 export interface FlexProps extends DefaultProps {
   children?: React.ReactNode;

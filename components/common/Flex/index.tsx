@@ -1,4 +1,4 @@
-import Flex from "./flex";
+import Flex from "./Flex";
 
-export type { FlexProps } from "./flex";
+export type { FlexProps } from "./Flex";
 export default Flex;
