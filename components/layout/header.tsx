@@ -1,20 +1,27 @@
 import { Text, Group } from "@mantine/core";
 import React from "react";
+import Link from "next/link";
 
 export default function index() {
-  const navItems = ["Dashboard", "Invoices", "Clients", "Calendar"];
+  const navItems = [
+    { title: "Dashboard", path: "/dashboard" },
+    { title: "Invoices", path: "/invoices" },
+    { title: "Clients", path: "/clients" },
+    { title: "Calendar", path: "/calendar" },
+  ];
   return (
-    <Group
-      sx={{ justifyContent: "space-between", padding: "1rem" }}
-      direction="row"
-    >
+    <Group sx={{ padding: "1rem" }} direction="row" position="apart">
       <Group direction="row" spacing="xl">
         <Group>
           <Text>Logo</Text>
         </Group>
-        <Group direction="row">
-          {navItems.map((navItem) => (
-            <Text key={navItem}>{navItem}</Text>
+        <Group>
+          {navItems.map(({ title, path }) => (
+            <Text key={path}>
+              <Link href={path}>
+                <a>{title}</a>
+              </Link>
+            </Text>
           ))}
         </Group>
       </Group>
