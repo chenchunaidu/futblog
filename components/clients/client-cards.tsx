@@ -1,10 +1,15 @@
 import React from "react";
 import { SimpleGrid } from "@mantine/core";
 import ClientCard from "./client-card";
+import { Client } from "./types";
 //TODO: handle dynamic data
 //TODO: pagination
-export default function ClientCards() {
-  const cards = [1, 2, 3, 4, 5, 6, 7, 8];
+
+interface ClientCardsProps {
+  clients: Client[];
+}
+
+const ClientCards: React.FC<ClientCardsProps> = ({ clients = [] }) => {
   return (
     <SimpleGrid
       cols={3}
@@ -14,9 +19,11 @@ export default function ClientCards() {
       ]}
       sx={{ padding: "2rem", width: "100%" }}
     >
-      {cards.map((card, index) => (
-        <ClientCard key={index} />
+      {clients.map((client, index) => (
+        <ClientCard key={index} {...client} />
       ))}
     </SimpleGrid>
   );
-}
+};
+
+export default ClientCards;

@@ -1,4 +1,4 @@
-export interface CreateClientForm {
+export interface Client {
   firstName: string;
   lastName: string;
   email: string;
@@ -13,5 +13,9 @@ export interface CreateClientForm {
   phoneNumber: string;
   faxNumber: string;
   taxIdentificationNumber: string;
-  notes: string;
+  notes?: string;
+  organizationName?: string;
+  clientType?: string;
 }
+
+export type CreateClientForm = Client;

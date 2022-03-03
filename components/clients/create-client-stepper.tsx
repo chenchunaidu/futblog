@@ -4,16 +4,20 @@ import CreateClientBasicInformation from "./create-client-basic-information";
 import CreateClientAddress from "./create-client-address";
 import CreateClientAdditionalInformation from "./create-client-additional-information";
 import { useForm } from "@mantine/hooks";
-import { UseForm } from "@mantine/hooks/lib/use-form/use-form";
 import { CreateClientForm } from "./types";
 
-//TODO: handle organization and individual
-//TODO: close on save
 //TODO: call api on save
 
-export default function CreateClientStepper() {
+interface CreateClientStepperProps {
+  handleSubmit: (input: CreateClientForm) => void;
+}
+
+const CreateClientStepper: React.FC<CreateClientStepperProps> = ({
+  handleSubmit,
+}) => {
   const [active, setActive] = useState<number>(1);
-  const form: UseForm<CreateClientForm> = useForm({
+  const [clientType, setClientType] = useState<string>("individual");
+  const form = useForm<CreateClientForm>({
     initialValues: {
       firstName: "",
       lastName: "",
@@ -30,6 +34,8 @@ export default function CreateClientStepper() {
       faxNumber: "",
       taxIdentificationNumber: "",
       notes: "",
+      organizationName: "",
+      clientType: "",
     },
 
     validationRules: {
@@ -46,7 +52,8 @@ export default function CreateClientStepper() {
   const nextStep = () => {
     const isValid = form.validate();
     if (active === steps.length) {
-      console.log(form.values);
+      const { values } = form;
+      handleSubmit({ ...values, clientType });
     } else if (isValid) setActive(active + 1);
   };
   const prevStep = () => setActive(active > 1 ? active - 1 : active);
@@ -55,7 +62,13 @@ export default function CreateClientStepper() {
     {
       label: "Step 1",
       description: "Enter basic information",
-      Component: <CreateClientBasicInformation form={form} />,
+      Component: (
+        <CreateClientBasicInformation
+          form={form}
+          setClientType={setClientType}
+          clientType={clientType}
+        />
+      ),
     },
     {
       label: "Step 2",
@@ -94,4 +107,6 @@ export default function CreateClientStepper() {
       </Group>
     </form>
   );
-}
+};
+
+export default CreateClientStepper;

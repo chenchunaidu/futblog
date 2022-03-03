@@ -1,6 +1,6 @@
-import React from "react";
+import React, { Dispatch, SetStateAction } from "react";
 
-import { TextInput, Group, Select } from "@mantine/core";
+import { TextInput, Group, Select, RadioGroup, Radio } from "@mantine/core";
 import { formattedLanguages } from "../../data/all-languages";
 import { formattedCurrencies } from "../../data/all-currencies";
 import { UseForm } from "@mantine/hooks/lib/use-form/use-form";
@@ -8,13 +8,35 @@ import { CreateClientForm } from "./types";
 
 interface CreateClientBasicInformationProps {
   form: UseForm<CreateClientForm>;
+  clientType?: string;
+  setClientType?: Dispatch<SetStateAction<string>>;
 }
 
 const CreateClientBasicInformation: React.FC<
   CreateClientBasicInformationProps
-> = ({ form }) => {
+> = ({ form, clientType, setClientType }) => {
   return (
     <Group spacing="md" direction="column" grow>
+      <RadioGroup
+        label="Select client type"
+        description="Select whether client is individual or organization"
+        value={clientType}
+        onChange={setClientType}
+      >
+        <Radio value="individual">Individual</Radio>
+        <Radio value="organization">Organization</Radio>
+      </RadioGroup>
+      {clientType === "organization" ? (
+        <TextInput
+          data-autofocus
+          placeholder="Organization name"
+          label="Organization name"
+          {...form.getInputProps("organizationName")}
+        />
+      ) : (
+        ""
+      )}
+
       <Group grow align="flex-start">
         <TextInput
           data-autofocus

@@ -4,16 +4,35 @@ import { HiOutlineMail } from "react-icons/hi";
 import { BsFillTelephoneOutboundFill } from "react-icons/bs";
 import { AiOutlineFire } from "react-icons/ai";
 import ClientMenu from "./client-menu";
+import { Client } from "./types";
 
-//TODO: handle dynamic data
 //TODO: handle send new invoice
-//TODO: visual difference between individual vs organization [use icon and tooltop or badge]
-export default function ClientCard() {
+//TODO: handle client
+//TODO: handle edit client
+
+type ClientCardProps = Client;
+
+const ClientCard: React.FC<ClientCardProps> = ({
+  firstName,
+  lastName,
+  organizationName,
+  email,
+  phoneNumber,
+  street1,
+  street2,
+  city,
+  state,
+  pinCode,
+  country,
+  clientType,
+}) => {
   const VIPIcon = (
     <ActionIcon size="xs" radius="xl" color="pink" variant="transparent">
       <AiOutlineFire style={{ width: 24, height: 24 }} />
     </ActionIcon>
   );
+
+  const isOrganization = clientType === "organization";
 
   return (
     <div style={{ width: 340, margin: "auto" }}>
@@ -21,28 +40,27 @@ export default function ClientCard() {
         <Group spacing="xs">
           <Group position="apart" sx={{ width: "100%" }}>
             <Text weight={600} size="lg">
-              Proximity Works
+              {isOrganization ? organizationName : `${firstName} ${lastName}`}
             </Text>
-            <Badge color="pink" variant="light" leftSection={VIPIcon}>
-              VIP
-            </Badge>
             <ClientMenu />
           </Group>
+          <Badge color="pink" variant="light" leftSection={VIPIcon}>
+            {isOrganization ? "Organization" : "Individual"}
+          </Badge>
           <Group>
             <ActionIcon>
               <HiOutlineMail />
             </ActionIcon>
-            <Text>proximity@gmail.com</Text>
+            <Text>{email}</Text>
           </Group>
           <Group>
             <ActionIcon>
               <BsFillTelephoneOutboundFill />
             </ActionIcon>
-            <Text>+9190100000</Text>
+            <Text>{phoneNumber}</Text>
           </Group>
           <Text size="xs" color="gray">
-            502/4B, Versova, Skylark Towers, Chs Ltd, Mhada Hig Colony, Swami
-            Samarth Circle, Andheri West,Maharastra,Mumbai,400053
+            {street1}, {street2}, {city}, {state}, {country}, {pinCode}
           </Text>
           <Button variant="light" fullWidth style={{ marginTop: 14 }}>
             Send new invoice
@@ -51,4 +69,6 @@ export default function ClientCard() {
       </Card>
     </div>
   );
-}
+};
+
+export default ClientCard;
