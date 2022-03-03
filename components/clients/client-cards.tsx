@@ -1,7 +1,8 @@
 import React from "react";
 import { SimpleGrid } from "@mantine/core";
 import ClientCard from "./client-card";
-
+//TODO: handle dynamic data
+//TODO: pagination
 export default function ClientCards() {
   const cards = [1, 2, 3, 4, 5, 6, 7, 8];
   return (

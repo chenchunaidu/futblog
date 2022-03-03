@@ -1,18 +1,13 @@
-import {
-  Card,
-  Text,
-  Badge,
-  Button,
-  Group,
-  useMantineTheme,
-  Box,
-} from "@mantine/core";
+import { Card, Text, Badge, Button, Group } from "@mantine/core";
 import { ActionIcon } from "@mantine/core";
 import { HiOutlineMail } from "react-icons/hi";
 import { BsFillTelephoneOutboundFill } from "react-icons/bs";
 import { AiOutlineFire } from "react-icons/ai";
 import ClientMenu from "./client-menu";
 
+//TODO: handle dynamic data
+//TODO: handle send new invoice
+//TODO: visual difference between individual vs organization [use icon and tooltop or badge]
 export default function ClientCard() {
   const VIPIcon = (
     <ActionIcon size="xs" radius="xl" color="pink" variant="transparent">

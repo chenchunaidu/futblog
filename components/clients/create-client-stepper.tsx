@@ -7,6 +7,10 @@ import { useForm } from "@mantine/hooks";
 import { UseForm } from "@mantine/hooks/lib/use-form/use-form";
 import { CreateClientForm } from "./types";
 
+//TODO: handle organization and individual
+//TODO: close on save
+//TODO: call api on save
+
 export default function CreateClientStepper() {
   const [active, setActive] = useState<number>(1);
   const form: UseForm<CreateClientForm> = useForm({
@@ -14,13 +18,13 @@ export default function CreateClientStepper() {
       firstName: "",
       lastName: "",
       email: "",
-      currency: "",
-      language: "",
+      currency: "USD",
+      language: "en",
       street1: "",
       street2: "",
       city: "",
       state: "",
-      country: "",
+      country: "US",
       pinCode: "",
       phoneNumber: "",
       faxNumber: "",
