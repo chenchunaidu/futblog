@@ -13,11 +13,13 @@ export default function index() {
     <Group sx={{ padding: "1rem" }} direction="row" position="apart">
       <Group direction="row" spacing="xl">
         <Group>
-          <Text>Logo</Text>
+          <Text size="xl" weight="bold">
+            Logo
+          </Text>
         </Group>
-        <Group>
+        <Group direction="row" spacing="xl">
           {navItems.map(({ title, path }) => (
-            <Text key={path}>
+            <Text key={path} size="md">
               <Link href={path}>
                 <a>{title}</a>
               </Link>
