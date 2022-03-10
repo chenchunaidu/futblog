@@ -1,5 +1,5 @@
 import { Group } from "@mantine/core";
-import Flex from "../../components/common/flex";
+
 import ClientCards from "../../components/clients/client-cards";
 import CreateClientModal from "../../components/clients/create-client-modal";
 import { Client } from "../../components/clients/types";
@@ -31,9 +31,8 @@ const clients: Client[] = [
 export default function Clients() {
   return (
     <Group direction="column">
-      <Flex sx={{ width: "100%" }} justify="flex-end">
-        <CreateClientModal ModalOpenButtonLabel="New Client" />
-      </Flex>
+      <CreateClientModal ModalOpenButtonLabel="New Client" />
+
       <ClientCards clients={clients} />
     </Group>
   );
