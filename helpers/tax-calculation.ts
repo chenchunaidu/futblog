@@ -1,5 +1,5 @@
 import { Configuration } from "../data/tax-types";
-import { IncomeDetailsForm } from "../pages/tax/types";
+import { IncomeDetailsForm } from "../components/tax/types";
 
 interface TaxCalculationInput {
   incomeDetails: IncomeDetailsForm;

@@ -2,7 +2,7 @@ import { Paper, Group, Text, Select, SelectItemProps } from "@mantine/core";
 import { taxTypesOptions } from "../../data/tax-types";
 import { forwardRef, FC } from "react";
 import { UseForm } from "@mantine/hooks/lib/use-form/use-form";
-import { SelectTaxTypeForm } from "../../pages/tax/types";
+import { SelectTaxTypeForm } from "./types";
 
 interface CustomSelectItemProps extends SelectItemProps {
   label: string;

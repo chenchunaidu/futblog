@@ -3,7 +3,10 @@ import { Stepper, Button, Group, Paper, Container } from "@mantine/core";
 import CalculateTax from "../../components/tax/calculate-tax";
 import EnterIncomeDetails from "../../components/tax/enter-income-details";
 import SelectTaxType from "../../components/tax/select-tax-type";
-import { SelectTaxTypeForm, IncomeDetailsForm } from "./types";
+import {
+  SelectTaxTypeForm,
+  IncomeDetailsForm,
+} from "../../components/tax/types";
 import { useForm } from "@mantine/hooks";
 import { taxConfiguration } from "../../data/tax-types";
 import { calculateTax, CalculatedTax } from "../../helpers/tax-calculation";

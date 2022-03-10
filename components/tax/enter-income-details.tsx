@@ -2,7 +2,7 @@ import React from "react";
 import { Group, Text, NumberInput, InputWrapper } from "@mantine/core";
 import { Configuration } from "../../data/tax-types";
 import { UseForm } from "@mantine/hooks/lib/use-form/use-form";
-import { IncomeDetailsForm } from "../../pages/tax/types";
+import { IncomeDetailsForm } from "./types";
 
 interface EnterIncomeDetailsProps {
   configuration: Configuration;
