@@ -8,6 +8,10 @@ export default function index() {
     { title: "Invoices", path: "/invoices" },
     { title: "Clients", path: "/clients" },
     { title: "Calendar", path: "/calendar" },
+    {
+      title: "Tax",
+      path: "/tax",
+    },
   ];
   return (
     <Group sx={{ padding: "1rem" }} direction="row" position="apart">
