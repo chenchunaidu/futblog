@@ -6,7 +6,7 @@ import SelectTaxType from "../../components/tax/select-tax-type";
 import { SelectTaxTypeForm, IncomeDetailsForm } from "./types";
 import { useForm } from "@mantine/hooks";
 import { taxConfiguration } from "../../data/tax-types";
-import { calculateTax, CalculatedTax } from "./tax-calculation";
+import { calculateTax, CalculatedTax } from "../../helpers/tax-calculation";
 
 export default function CreateInvoice() {
   const [active, setActive] = useState(0);

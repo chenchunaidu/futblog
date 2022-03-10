@@ -1,6 +1,6 @@
 import React from "react";
 import { Table } from "@mantine/core";
-import { SlabWiseSegregation } from "../../pages/tax/tax-calculation";
+import { SlabWiseSegregation } from "../../helpers/tax-calculation";
 
 interface TaxSlabsViewProps {
   taxSlabs: SlabWiseSegregation[];

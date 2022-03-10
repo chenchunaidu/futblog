@@ -10,7 +10,7 @@ import {
 } from "@mantine/core";
 import React from "react";
 import TaxSlabsView from "./tax-slabs-view";
-import { CalculatedTax } from "../../pages/tax/tax-calculation";
+import { CalculatedTax } from "../../helpers/tax-calculation";
 import { AiOutlineArrowUp, AiOutlineArrowDown } from "react-icons/ai";
 
 interface CalculateTaxProps {
