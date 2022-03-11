@@ -15,7 +15,6 @@ const CreateClientModal: React.FC<CreateClientModalProps> = ({
   const [opened, setOpened] = useState(false);
 
   const handleSubmit = (values: CreateClientForm) => {
-    console.log(values);
     setOpened(false);
   };
 

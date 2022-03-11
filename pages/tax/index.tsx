@@ -46,6 +46,9 @@ export default function CreateInvoice() {
     let isValid = false;
     if (active === 0) {
       isValid = selectTaxForm.validate();
+      if (selectedTax !== selectTaxForm.values.taxType) {
+        incomeDetailsForm.reset();
+      }
       setSelectedTax(selectTaxForm.values.taxType);
     }
     if (active === 1) {

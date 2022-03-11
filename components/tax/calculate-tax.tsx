@@ -18,8 +18,6 @@ interface CalculateTaxProps {
 }
 
 const CalculateTax: React.FC<CalculateTaxProps> = ({ calculatedTax }) => {
-  const theme = useMantineTheme();
-  console.log(theme.primaryColor);
   const { income, tax, slabWiseSegregation, taxableIncome } =
     calculatedTax || {};
   return (
