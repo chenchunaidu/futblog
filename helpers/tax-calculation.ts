@@ -20,9 +20,6 @@ export interface CalculatedTax {
 
 type CalculateTax = (input: TaxCalculationInput) => CalculatedTax;
 
-// we needs total tax and slab wise tax
-//
-
 export const calculateTax: CalculateTax = ({
   incomeDetails,
   configuration,

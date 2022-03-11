@@ -15,7 +15,7 @@ const SelectItem = forwardRef<HTMLDivElement, CustomSelectItemProps>(
       <div ref={ref} {...others}>
         <Group noWrap>
           <div>
-            <Paper padding="lg" shadow="lg">
+            <Paper p="lg" shadow="lg">
               <Text weight="600">{label}</Text>
               <Text size="xs" color="dimmed">
                 {description}

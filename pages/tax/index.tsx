@@ -93,8 +93,8 @@ export default function CreateInvoice() {
   ];
 
   return (
-    <Container size="md" padding="xs">
-      <Paper padding="xl">
+    <Container size="md" p="xs">
+      <Paper p="xl">
         <Stepper active={active} onStepClick={setActive} breakpoint="sm">
           {steps.map(
             ({ label, description, Component, containerSize }, index) => (
@@ -103,9 +103,7 @@ export default function CreateInvoice() {
                   size={containerSize === "lg" ? "xl" : "xs"}
                   sx={{ height: "65vh", overflow: "scroll" }}
                 >
-                  <Paper padding="xl" my="lg">
-                    {Component}
-                  </Paper>
+                  <Paper p="sm">{Component}</Paper>
                 </Container>
               </Stepper.Step>
             )

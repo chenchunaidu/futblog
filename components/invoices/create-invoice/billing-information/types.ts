@@ -20,7 +20,6 @@ export interface AdditionalDetails {
 }
 
 export interface BillingItem {
-  id: string;
   name: string;
   description: string;
   quantity: string;
@@ -28,7 +27,8 @@ export interface BillingItem {
   amount: string;
   chips: string[];
   discount: Partial<Discount>;
-  tax: Partial<Tax>;
+  taxName?: string;
+  taxAmount?: string;
   shipping: Partial<Shipping>;
 }
 

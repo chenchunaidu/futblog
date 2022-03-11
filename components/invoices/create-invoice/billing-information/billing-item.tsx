@@ -7,8 +7,10 @@ import {
   ActionIcon,
   Text,
 } from "@mantine/core";
+import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import React from "react";
 import { MdOutlineDeleteOutline } from "react-icons/md";
+import { BasicInformation } from "../types";
 import AdditionalDetails from "./additional-details";
 import { BillingItem, HandleItemChange } from "./types";
 
@@ -16,35 +18,21 @@ import { BillingItem, HandleItemChange } from "./types";
 
 interface CreateInvoiceBillingInfoItemProps {
   index: number;
-  handleDeleteItem: (index: number) => void;
-  handleAddItem: () => void;
-  item: Partial<BillingItem>;
-  handleItemChange: HandleItemChange;
+  form: UseFormReturnType<BasicInformation>;
 }
 
 const CreateInvoiceBillingInfoItem: React.FC<
   CreateInvoiceBillingInfoItemProps
-> = ({ index, handleAddItem, handleItemChange, handleDeleteItem, item }) => {
-  const {
-    description,
-    name,
-    quantity,
-    rate,
-    amount,
-    discount = {},
-    shipping = {},
-    tax = {},
-    chips = [],
-  } = item;
+> = ({ index, form }) => {
   return (
     <div>
-      <Paper shadow="lg" padding="sm" key={index}>
+      <Paper shadow="lg" p="sm" key={index}>
         {index > 0 ? (
           <Group position="right" sx={{ width: "100%" }}>
             <ActionIcon
               variant="light"
               color="red"
-              onClick={() => handleDeleteItem(index)}
+              onClick={() => form.removeListItem("billing", index)}
             >
               <MdOutlineDeleteOutline size="24px" />
             </ActionIcon>
@@ -57,41 +45,30 @@ const CreateInvoiceBillingInfoItem: React.FC<
           <TextInput
             placeholder="Item name"
             label="Item name"
-            value={name}
-            onChange={(e) => handleItemChange(index, "name", e.target.value)}
+            {...form.getListInputProps("billing", index, "name")}
           />
           <Group direction="column" grow>
             <Textarea
               placeholder="Lorem ipsum dolor sit amet consectetur adipisicing elit. Labore eos laudantium "
               label="Description"
-              value={description}
-              onChange={(e) =>
-                handleItemChange(index, "description", e.target.value)
-              }
+              {...form.getListInputProps("billing", index, "description")}
             />
           </Group>
           <Group grow>
             <TextInput
               placeholder="Quantity"
               label="Quantity"
-              value={quantity}
-              onChange={(e) =>
-                handleItemChange(index, "quantity", e.target.value)
-              }
+              {...form.getListInputProps("billing", index, "quantity")}
             />
             <TextInput
               placeholder="Rate"
               label="Rate"
-              value={rate}
-              onChange={(e) => handleItemChange(index, "rate", e.target.value)}
+              {...form.getListInputProps("billing", index, "rate")}
             />
             <TextInput
               placeholder="Amount"
               label="Amount"
-              value={amount}
-              onChange={(e) =>
-                handleItemChange(index, "amount", e.target.value)
-              }
+              {...form.getListInputProps("billing", index, "amount")}
             />
           </Group>
           <Group spacing={0} mt="sm">
@@ -102,15 +79,23 @@ const CreateInvoiceBillingInfoItem: React.FC<
               Select additional details you want to add by clicking on chip
             </Text>
           </Group>
-          <AdditionalDetails
-            index={index}
-            discount={discount}
-            tax={tax}
-            shipping={shipping}
-            handleItemChange={handleItemChange}
-            chips={chips}
-          />
-          <Button variant="light" onClick={handleAddItem}>
+          <AdditionalDetails index={index} form={form} />
+          <Button
+            variant="light"
+            onClick={() =>
+              form.addListItem("billing", {
+                name: "",
+                description: "",
+                quantity: "",
+                rate: "",
+                amount: "",
+                chips: [],
+                discount: {},
+                // tax: {},
+                shipping: {},
+              })
+            }
+          >
             Add item
           </Button>
         </Group>

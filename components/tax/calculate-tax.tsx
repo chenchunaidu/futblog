@@ -18,15 +18,19 @@ interface CalculateTaxProps {
 }
 
 const CalculateTax: React.FC<CalculateTaxProps> = ({ calculatedTax }) => {
-  const { income, tax, slabWiseSegregation, taxableIncome } =
-    calculatedTax || {};
+  const {
+    income = 0,
+    tax = 0,
+    slabWiseSegregation,
+    taxableIncome,
+  } = calculatedTax || {};
   return (
     <SimpleGrid cols={2}>
-      <Paper shadow="lg" padding="md">
+      <Paper shadow="lg" p="xs">
         <Group direction="column" grow>
           <Title order={3}>Tax Summary</Title>
           <Group direction="column" grow spacing={0}>
-            <Paper shadow="xs" padding="md">
+            <Paper shadow="xs" p="xs">
               <Text size="lg" color="dimmed">
                 Income
               </Text>
@@ -40,7 +44,7 @@ const CalculateTax: React.FC<CalculateTaxProps> = ({ calculatedTax }) => {
           </Group>
 
           <Group direction="column" grow spacing={0}>
-            <Paper shadow="xs" padding="md">
+            <Paper shadow="xs" p="xs">
               <Text size="lg" color="dimmed">
                 Taxable Income
               </Text>
@@ -50,7 +54,7 @@ const CalculateTax: React.FC<CalculateTaxProps> = ({ calculatedTax }) => {
             </Paper>
           </Group>
 
-          <Paper shadow="xs" padding="md">
+          <Paper shadow="xs" p="xs">
             <Group direction="column" grow spacing={0}>
               <Text size="lg" color="dimmed">
                 Tax
@@ -63,9 +67,19 @@ const CalculateTax: React.FC<CalculateTaxProps> = ({ calculatedTax }) => {
               </Group>
             </Group>
           </Paper>
+          <Paper shadow="xs" p="xs">
+            <Group direction="column" grow spacing={0}>
+              <Text size="lg" color="dimmed">
+                Real Income
+              </Text>
+              <Group>
+                <Title>{income - tax}</Title>
+              </Group>
+            </Group>
+          </Paper>
         </Group>
       </Paper>
-      <Paper shadow="lg" padding="md">
+      <Paper shadow="lg" p="xs">
         <Group align="flex-start">
           <Title order={3}>Slab wise tax</Title>
           {slabWiseSegregation ? (

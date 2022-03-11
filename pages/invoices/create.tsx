@@ -4,6 +4,7 @@ import CreateInvoiceSendEmail from "../../components/invoices/create-invoice/sen
 import CreateInvoiceBillingInformation from "../../components/invoices/create-invoice/billing-information/billing-information";
 import CreateInvoiceBasicInformation from "../../components/invoices/create-invoice/basic-information";
 import { BasicInformation } from "../../components/invoices/create-invoice/types";
+import { formList, useForm } from "@mantine/form";
 
 // TODO: create three components
 //TODO: basic information component
@@ -11,10 +12,34 @@ import { BasicInformation } from "../../components/invoices/create-invoice/types
 //TODO: send email component
 //TODO: preview pdf
 export default function CreateInvoice() {
+  const form = useForm<BasicInformation>({
+    initialValues: {
+      name: "",
+      invoiceNo: "",
+      description: "",
+      language: "",
+      currency: "",
+      eventDate: "",
+      dueDate: "",
+      placeOrderNo: "",
+      client: "",
+      billing: formList([
+        {
+          name: "",
+          description: "",
+          quantity: "",
+          rate: "",
+          amount: "",
+          chips: [],
+          discount: {},
+          tax: {},
+          shipping: {},
+        },
+      ]),
+    },
+  });
   const [active, setActive] = useState(0);
-  const [basicInformation, setBasicInformation] = useState<
-    Partial<BasicInformation>
-  >({});
+
   const nextStep = () =>
     setActive((current) => (current < 2 ? current + 1 : current));
   const prevStep = () =>
@@ -24,14 +49,12 @@ export default function CreateInvoice() {
     {
       label: "Basic information",
       description: "Enter basic information",
-      Component: (
-        <CreateInvoiceBasicInformation initialValues={basicInformation} />
-      ),
+      Component: <CreateInvoiceBasicInformation form={form} />,
     },
     {
       label: "Billing details",
       description: "Enter billing details",
-      Component: <CreateInvoiceBillingInformation />,
+      Component: <CreateInvoiceBillingInformation form={form} />,
     },
     {
       label: "Send email",
@@ -41,13 +64,13 @@ export default function CreateInvoice() {
   ];
 
   return (
-    <Container size="md" padding="xs">
-      <Paper padding="xl">
+    <Container size="md" p="xs">
+      <Paper p="xl">
         <Stepper active={active} onStepClick={setActive} breakpoint="sm">
           {steps.map(({ label, description, Component }, index) => (
             <Stepper.Step label={label} description={description} key={index}>
               <Container size="xs">
-                <Paper shadow="sm" padding="lg">
+                <Paper shadow="sm" p="lg">
                   {Component}
                 </Paper>
               </Container>

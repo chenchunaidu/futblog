@@ -4,19 +4,16 @@ import { TextInput, Group, Select, Textarea } from "@mantine/core";
 import { DatePicker } from "@mantine/dates";
 import { formattedLanguages } from "../../../data/all-languages";
 import { formattedCurrencies } from "../../../data/all-currencies";
-import { useForm } from "@mantine/hooks";
 import { BasicInformation } from "./types";
+import { UseFormReturnType } from "@mantine/form/lib/use-form";
 
 interface CreateInvoiceBasicInformationProps {
-  initialValues: Partial<BasicInformation>;
+  form: UseFormReturnType<BasicInformation>;
 }
 
 const CreateInvoiceBasicInformation: React.FC<
   CreateInvoiceBasicInformationProps
-> = ({ initialValues }) => {
-  const form = useForm({
-    initialValues,
-  });
+> = ({ form }) => {
   return (
     <Group spacing="md" direction="column" grow>
       <form>

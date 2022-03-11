@@ -1,13 +1,15 @@
 import React from "react";
 import { Group, TextInput, Text } from "@mantine/core";
 import { Tax as TaxInterface, HandleItemChange } from "./types";
+import { UseFormReturnType } from "@mantine/form/lib/use-form";
+import { BasicInformation } from "../types";
 
 interface TaxProps extends Partial<TaxInterface> {
-  handleItemChange: HandleItemChange;
+  form: UseFormReturnType<BasicInformation>;
   index: number;
 }
 
-const Tax: React.FC<TaxProps> = ({ name, amount, handleItemChange, index }) => {
+const Tax: React.FC<TaxProps> = ({ form, index }) => {
   return (
     <Group grow direction="column" spacing="xs">
       <Text weight="600">Taxes</Text>
@@ -15,12 +17,13 @@ const Tax: React.FC<TaxProps> = ({ name, amount, handleItemChange, index }) => {
         <TextInput
           placeholder="GST"
           label="Name"
-          value={name}
-          onChange={(e) =>
-            handleItemChange(index, "tax", { name: e.target.value })
-          }
+          {...form.getListInputProps("billing", index, "taxName")}
         />
-        <TextInput placeholder="1000" label="Amount" value={amount} />
+        <TextInput
+          placeholder="1000"
+          label="Amount"
+          {...form.getListInputProps("billing", index, "taxAmount")}
+        />
       </Group>
     </Group>
   );

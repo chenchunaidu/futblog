@@ -19,7 +19,7 @@ export default function InvoiceCard() {
 
   return (
     <div style={{ width: 340, margin: "auto" }}>
-      <Card shadow="sm" padding="lg">
+      <Card shadow="sm" p="lg">
         <Group direction="column" spacing={10}>
           <Group>
             <Text weight={600} size="lg">

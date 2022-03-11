@@ -36,7 +36,7 @@ const ClientCard: React.FC<ClientCardProps> = ({
 
   return (
     <div style={{ width: 340, margin: "auto" }}>
-      <Card shadow="sm" padding="lg">
+      <Card shadow="sm" p="lg">
         <Group spacing="xs">
           <Group position="apart" sx={{ width: "100%" }}>
             <Text weight={600} size="lg">
