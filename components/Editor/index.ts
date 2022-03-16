@@ -9,10 +9,12 @@ import {
 } from "./CustomText";
 import { CustomBackgroundImageBlock } from "./CustomBackgroundImage";
 import { CustomImageBlock } from "./CustomImage";
-import { Block } from "../../types/editor.types";
+import { Block, StyleProps } from "../../types/editor.types";
 import { CustomInlineCodeBlock } from "./CustomInlineCode";
 import { CustomQuoteBlock } from "./CustomQuote";
 import { CustomListBlock } from "./CustomList";
+import { CustomGridBlock } from "./CustomGrid";
+import React from "react";
 
 export const ComponentMapping = {
   "Heading 1": Heading1Block,
@@ -27,6 +29,7 @@ export const ComponentMapping = {
   "Background Image": CustomBackgroundImageBlock,
   Quote: CustomQuoteBlock,
   List: CustomListBlock,
+  Grid: CustomGridBlock,
 };
 
 export const AllComponents = Object.keys(ComponentMapping) as Array<

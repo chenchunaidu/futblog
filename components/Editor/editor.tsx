@@ -15,7 +15,6 @@ import ComponentWrapper from "./ComponentWrapper";
 import { defaultBlock } from ".";
 
 const EditorComp = () => {
-  // const [editorState, setEditorState] = React.useState<Block[]>([defaultBlock]);
   const [editorState, setEditorState] = useLocalStorageValue<Block[]>({
     key: "editorState",
     defaultValue: [defaultBlock],
@@ -23,8 +22,6 @@ const EditorComp = () => {
   const [selectedBlockIndex, setSelectedBlockIndex] = React.useState<
     number | null
   >(null);
-
-  console.log(editorState);
 
   const selectedBlock =
     selectedBlockIndex || selectedBlockIndex === 0
@@ -47,7 +44,7 @@ const EditorComp = () => {
 
   const handleDuplicateBlock: HandleDuplicateBlock = (index) => {
     const blockToCopy = editorState[index];
-    handleAddBlock(index, blockToCopy);
+    handleAddBlock(index, { ...blockToCopy });
   };
 
   const handleSelectBlock: HandleSelectBlock = (index) => {
