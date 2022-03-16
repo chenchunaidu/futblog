@@ -2,7 +2,7 @@ import { Menu, Text, ActionIcon } from "@mantine/core";
 import { Trash, Copy } from "tabler-icons-react";
 import { BsThreeDotsVertical } from "react-icons/bs";
 import { AiFillCaretRight, AiFillEye } from "react-icons/ai";
-
+import SelectComponentMenu from "./selectComponentMenu";
 interface BlockMenuProps {
   onDeleteBlock: () => void;
   onDuplicateBlock: () => void;
@@ -19,7 +19,7 @@ const BlockMenu: React.FC<BlockMenuProps> = ({
   return (
     <Menu
       control={
-        <ActionIcon size="sm" variant="default">
+        <ActionIcon size="md" variant="hover">
           <BsThreeDotsVertical />
         </ActionIcon>
       }
@@ -38,12 +38,6 @@ const BlockMenu: React.FC<BlockMenuProps> = ({
         onClick={onDuplicateBlock}
       >
         Duplicate
-      </Menu.Item>
-      <Menu.Item icon={<AiFillEye />} onClick={onDuplicateBlock}>
-        Preview
-      </Menu.Item>
-      <Menu.Item rightSection={<AiFillCaretRight />} onClick={onDuplicateBlock}>
-        Select Component
       </Menu.Item>
     </Menu>
   );

@@ -24,6 +24,7 @@ import { UserButton } from "./userButton";
 const useStyles = createStyles((theme) => ({
   navbar: {
     paddingTop: 0,
+    display: "none",
   },
 
   section: {
