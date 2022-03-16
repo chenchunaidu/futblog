@@ -4,7 +4,7 @@ type ListItem = string;
 
 interface CustomListProps {
   // listItems: ListItem[];
-  listItems: string;
+  listItems?: string;
 }
 
 const CustomList: React.FC<CustomListProps> = ({ listItems }) => {
