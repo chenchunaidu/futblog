@@ -9,8 +9,6 @@ export interface StyleProps {
 export interface Block {
   componentName: keyof typeof ComponentMapping;
   props?: StyleProps;
-  quantity?: number;
-  direction?: React.CSSProperties["flexDirection"];
 }
 
 export interface EditorFormInput {

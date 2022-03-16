@@ -31,8 +31,6 @@ const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
   componentName,
   props = {},
   selectedBlockIndex,
-  quantity,
-  direction,
 }) => {
   const Component = ComponentMapping[componentName].component;
   const [hovered, setHovered] = React.useState<boolean>(false);
