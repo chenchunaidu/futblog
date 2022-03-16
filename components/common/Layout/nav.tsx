@@ -173,17 +173,10 @@ export default function NavbarSearch() {
   ));
 
   const collectionLinks = collections.map((collection) => (
-    // <a
-    //   href="/"
-    //   onClick={(event) => event.preventDefault()}
-    //   key={collection.label}
-    //   className={classes.collectionLink}
-    // >
     <div key={collection.label}>
       <span style={{ marginRight: 9, fontSize: 16 }}>{collection.emoji}</span>{" "}
       {collection.label}
     </div>
-    // </a>
   ));
 
   return (

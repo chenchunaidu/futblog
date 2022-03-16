@@ -8,7 +8,7 @@ const Layout: React.FC<LayoutProps> = ({ children }) => {
   return (
     <AppShell
       padding="md"
-      navbar={<NavbarSearch />}
+      // navbar={<NavbarSearch />}
       styles={(theme) => ({
         main: {
           height: "100vh",

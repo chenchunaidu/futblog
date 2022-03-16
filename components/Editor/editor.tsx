@@ -17,7 +17,7 @@ import { defaultBlock } from ".";
 const EditorComp = () => {
   // const [editorState, setEditorState] = React.useState<Block[]>([defaultBlock]);
   const [editorState, setEditorState] = useLocalStorageValue<Block[]>({
-    key: "@mantine/localStorage/val",
+    key: "editorState",
     defaultValue: [defaultBlock],
   });
   const [selectedBlockIndex, setSelectedBlockIndex] = React.useState<
