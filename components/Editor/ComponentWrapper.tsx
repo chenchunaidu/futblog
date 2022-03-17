@@ -1,7 +1,7 @@
-import { Box, Space } from "@mantine/core";
+import { Box } from "@mantine/core";
 
 import React from "react";
-import BlockMenu from "./BlockMenu";
+import BlockMenu from "./BlockMenuCompo";
 import {
   Block,
   HandleAddBlock,
@@ -11,7 +11,7 @@ import {
 } from "../../types/editor.types";
 import { ComponentMapping } from ".";
 
-import SelectComponentMenu from "./SelectComponentMenu";
+import SelectComponentMenu from "./SelectComponentMenuComp";
 
 interface ComponentWrapperProps extends Block {
   handleAddBlock: HandleAddBlock;
