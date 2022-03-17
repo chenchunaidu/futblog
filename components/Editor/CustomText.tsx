@@ -28,4 +28,5 @@ export const Heading6Block = {
 export const CustomTextBlock = {
   component: Text,
   defaultProps: { children: "Text" },
+  formElement: [{ type: "text", label: "children" }],
 };
