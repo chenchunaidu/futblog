@@ -53,7 +53,6 @@ const EditorComp = () => {
 
   const handleSelectedBlockChange: HandleSelectedBlockChange = (props) => {
     if (selectedBlock && (selectedBlockIndex || selectedBlockIndex == 0)) {
-      console.log(props);
       const currentEditorState = editorState;
       currentEditorState[selectedBlockIndex].props = props;
       setEditorState([...currentEditorState]);
