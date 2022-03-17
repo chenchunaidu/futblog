@@ -10,4 +10,11 @@ export const CustomImageBlock = {
     src: "",
     caption: "My dog begging for treats",
   },
+  inputs: [
+    { type: "text", name: "alt", label: "Alt" },
+    { type: "number", name: "width", label: "Width" },
+    { type: "number", name: "height", label: "Height" },
+    { type: "text", name: "src", label: "Image URL" },
+    { type: "text", name: "caption", label: "Caption" },
+  ],
 };

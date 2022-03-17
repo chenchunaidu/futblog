@@ -14,4 +14,8 @@ export default CustomQuote;
 export const CustomQuoteBlock = {
   component: CustomQuote,
   defaultProps: { cite: "", quote: "" },
+  inputs: [
+    { type: "textarea", label: "Quote", name: "quote" },
+    { type: "text", label: "Cite", name: "cite" },
+  ],
 };

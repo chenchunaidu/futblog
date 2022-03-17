@@ -1,7 +1,5 @@
 import { List } from "@mantine/core";
 
-type ListItem = string;
-
 interface CustomListProps {
   // listItems: ListItem[];
   listItems?: string;
@@ -24,4 +22,5 @@ export default CustomList;
 export const CustomListBlock = {
   component: CustomList,
   defaultProps: { listItems: "First Item" },
+  inputs: [],
 };

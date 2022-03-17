@@ -5,14 +5,14 @@ import {
   HandleDuplicateBlock,
   HandleSelectBlock,
   HandleSelectedBlockChange,
-  StyleProps,
 } from "../../types/editor.types";
 import React from "react";
-import { Box, Grid, Paper, JsonInput } from "@mantine/core";
+import { Box, Grid, Paper } from "@mantine/core";
 import { useLocalStorageValue } from "@mantine/hooks";
+import { RenderGroupInput } from "../common/Form";
 
 import ComponentWrapper from "./ComponentWrapper";
-import { defaultBlock } from ".";
+import { ComponentMapping, defaultBlock } from ".";
 
 const EditorComp = () => {
   const [editorState, setEditorState] = useLocalStorageValue<Block[]>({
@@ -51,11 +51,12 @@ const EditorComp = () => {
     setSelectedBlockIndex(index);
   };
 
-  const handleSelectedBlockChange: HandleSelectedBlockChange = (value) => {
-    if (selectedBlock) {
-      const currentEditorState = [...editorState];
-      selectedBlock.props = JSON.parse(value) as StyleProps;
-      setEditorState(currentEditorState);
+  const handleSelectedBlockChange: HandleSelectedBlockChange = (props) => {
+    if (selectedBlock && (selectedBlockIndex || selectedBlockIndex == 0)) {
+      console.log(props);
+      const currentEditorState = editorState;
+      currentEditorState[selectedBlockIndex].props = props;
+      setEditorState([...currentEditorState]);
     }
   };
 
@@ -85,16 +86,15 @@ const EditorComp = () => {
         </Box>
       </Grid.Col>
       <Grid.Col span={3}>
-        <Paper shadow="xl" sx={{ height: "95vh" }} p="lg">
-          <JsonInput
-            label="Enter your input here"
-            placeholder="Textarea will autosize to fit the content"
-            validationError="Invalid json"
-            formatOnBlur
-            autosize
-            minRows={4}
-            value={JSON.stringify(selectedBlock?.props) || ""}
-            onChange={handleSelectedBlockChange}
+        <Paper shadow="xl" sx={{ height: "95vh", overflow: "scroll" }} p="lg">
+          <RenderGroupInput
+            props={selectedBlock?.props || {}}
+            handleSelectedBlockChange={handleSelectedBlockChange}
+            inputs={
+              (selectedBlock?.componentName &&
+                ComponentMapping[selectedBlock?.componentName]?.inputs) ||
+              []
+            }
           />
         </Paper>
       </Grid.Col>
