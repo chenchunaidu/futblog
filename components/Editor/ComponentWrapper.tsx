@@ -1,4 +1,4 @@
-import { Box, Space } from "@mantine/core";
+import { Box } from "@mantine/core";
 
 import React from "react";
 import BlockMenu from "./BlockMenu";
