@@ -20,4 +20,5 @@ export const CustomInlineCodeBlock = {
     block: true,
     color: "red",
   },
+  inputs: [],
 };

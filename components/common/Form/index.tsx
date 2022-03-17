@@ -9,6 +9,12 @@ import {
   SelectItem,
 } from "@mantine/core";
 import React from "react";
+import {
+  HandleSelectedBlockChange,
+  StyleProps,
+} from "../../../types/editor.types";
+import GridInput from "./GridInput";
+import CustomInputWrapper from "./InputWrapper";
 
 export const inputComponentMapping = {
   text: TextInput,
@@ -17,36 +23,58 @@ export const inputComponentMapping = {
   switch: Switch,
   color: ColorInput,
   textarea: Textarea,
+  grid: GridInput,
 };
 
-interface Input {
+export interface CustomInputProps {
   type: keyof typeof inputComponentMapping;
-  onChange: (input: any) => void;
-  value: any;
   options?: (string | SelectItem)[];
+  label?: string;
+  name: string;
 }
 
 interface RenderGroupInputProps {
-  inputs: Input[];
+  inputs: CustomInputProps[];
+  props: StyleProps;
+  handleSelectedBlockChange: HandleSelectedBlockChange;
 }
 
 export const RenderGroupInput: React.FC<RenderGroupInputProps> = ({
   inputs,
+  props,
+  handleSelectedBlockChange,
 }) => {
+  const handleChange = (
+    label: string,
+    value:
+      | string
+      | number
+      | boolean
+      | React.ChangeEvent<HTMLInputElement>
+      | React.ChangeEvent<HTMLTextAreaElement>
+      | undefined
+  ) => {
+    if (value)
+      if (
+        typeof value === "string" ||
+        typeof value === "number" ||
+        typeof value === "boolean"
+      )
+        props[label] = value;
+      else {
+        props[label] = value?.target?.value;
+      }
+    handleSelectedBlockChange(props);
+  };
+
   return (
-    <Group direction="column">
-      {inputs.map(({ type, options = [] }, index) => {
-        if (type === "select") {
-          const InputComponent = inputComponentMapping[type];
-          return <InputComponent key={index} data={options} />;
-        }
-        const InputComponent = inputComponentMapping[type];
-        return <InputComponent key={index} />;
-      })}
+    <Group direction="column" grow>
+      <CustomInputWrapper
+        inputs={inputs}
+        handleSelectedBlockChange={handleSelectedBlockChange}
+        props={props}
+        handleInputChange={handleChange}
+      />
     </Group>
   );
 };
-
-// export default function index() {
-//   return <div>index</div>;
-// }

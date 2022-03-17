@@ -1,8 +1,6 @@
 import { Menu, Text, ActionIcon } from "@mantine/core";
 import { Trash, Copy } from "tabler-icons-react";
 import { BsThreeDotsVertical } from "react-icons/bs";
-import { AiFillCaretRight, AiFillEye } from "react-icons/ai";
-import SelectComponentMenu from "./selectComponentMenu";
 interface BlockMenuProps {
   onDeleteBlock: () => void;
   onDuplicateBlock: () => void;

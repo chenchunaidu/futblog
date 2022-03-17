@@ -1,5 +1,5 @@
 import React from "react";
-import EditorComp from "../../components/Editor/editor";
+import EditorComp from "../../components/Editor/Editor";
 
 // structure
 // should contain text, direction, component,component quantity, image

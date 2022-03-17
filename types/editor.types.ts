@@ -1,11 +1,13 @@
 import { FormList } from "@mantine/form/lib/form-list/form-list";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
-import React from "react";
 import { ComponentMapping } from "../components/Editor";
+import { GridItem } from "../components/Editor/CustomGrid";
 
 export interface StyleProps {
-  [x: string]: any;
+  [x: string]: string | number | boolean | GridItem[];
 }
+
+type componentName = keyof typeof ComponentMapping;
 export interface Block {
   componentName: keyof typeof ComponentMapping;
   props?: StyleProps;
@@ -25,4 +27,6 @@ export type HandleDuplicateBlock = (index: number) => void;
 
 export type HandleSelectBlock = (index: number) => void;
 
-export type HandleSelectedBlockChange = (value: string) => void;
+export type HandleAddGridItem = (block: Block) => void;
+
+export type HandleSelectedBlockChange = (props: StyleProps) => void;

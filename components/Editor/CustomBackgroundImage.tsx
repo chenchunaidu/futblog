@@ -54,4 +54,12 @@ export const CustomBackgroundImageBlock = {
     fontSize: "md",
     minHeight: "500px",
   },
+  inputs: [
+    { type: "textarea", name: "content", label: "Text" },
+    { type: "text", name: "imageUrl", label: "Background image URL" },
+    { type: "color", name: "textColor", label: "Text color" },
+    { type: "number", name: "maxWidth", label: "Max width" },
+    { type: "text", name: "fontSize", label: "Font size" },
+    { type: "text", name: "minHeight", label: "Min height" },
+  ],
 };

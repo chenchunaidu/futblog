@@ -3,8 +3,9 @@ import { Grid } from "@mantine/core";
 import { Block } from "../../types/editor.types";
 import { ComponentMapping } from ".";
 import { CustomTextBlock } from "./CustomText";
+import type { CustomBlockProps } from "./index";
 
-interface GridItem {
+export interface GridItem {
   span?: number;
   block: Block;
 }
@@ -40,7 +41,7 @@ const CustomGrid: React.FC<CustomGridProps> = ({ gridItems = [] }) => {
 
 export default CustomGrid;
 
-export const CustomGridBlock = {
+export const CustomGridBlock: CustomBlockProps = {
   component: CustomGrid,
   defaultProps: {
     gridItems: [
@@ -58,4 +59,5 @@ export const CustomGridBlock = {
       },
     ],
   },
+  inputs: [{ type: "grid", name: "gridItems" }],
 };

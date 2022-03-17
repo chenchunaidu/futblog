@@ -15,20 +15,29 @@ import { CustomQuoteBlock } from "./CustomQuote";
 import { CustomListBlock } from "./CustomList";
 import { CustomGridBlock } from "./CustomGrid";
 import React from "react";
+import { CustomInputProps } from "../common/Form";
+
+interface CustomBlockProps {
+  component: React.FC;
+  defaultProps: StyleProps;
+  inputs: CustomInputProps[];
+}
+
+export type { CustomBlockProps };
 
 export const ComponentMapping = {
-  "Heading 1": Heading1Block,
-  "Heading 2": Heading2Block,
-  "Heading 3": Heading3Block,
-  "Heading 4": Heading4Block,
-  "Heading 5": Heading5Block,
-  "Heading 6": Heading6Block,
-  Code: CustomInlineCodeBlock,
-  Text: CustomTextBlock,
-  Image: CustomImageBlock,
-  "Background Image": CustomBackgroundImageBlock,
-  Quote: CustomQuoteBlock,
-  List: CustomListBlock,
+  "Heading 1": Heading1Block as CustomBlockProps,
+  "Heading 2": Heading2Block as CustomBlockProps,
+  "Heading 3": Heading3Block as CustomBlockProps,
+  "Heading 4": Heading4Block as CustomBlockProps,
+  "Heading 5": Heading5Block as CustomBlockProps,
+  "Heading 6": Heading6Block as CustomBlockProps,
+  Code: CustomInlineCodeBlock as CustomBlockProps,
+  Text: CustomTextBlock as CustomBlockProps,
+  Image: CustomImageBlock as CustomBlockProps,
+  "Background Image": CustomBackgroundImageBlock as CustomBlockProps,
+  Quote: CustomQuoteBlock as CustomBlockProps,
+  List: CustomListBlock as CustomBlockProps,
   Grid: CustomGridBlock,
 };
 
