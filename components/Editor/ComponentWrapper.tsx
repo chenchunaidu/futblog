@@ -1,7 +1,7 @@
 import { Box } from "@mantine/core";
 
 import React from "react";
-import BlockMenu from "./BlockMenu";
+import BlockMenu from "./BlockMenuCompo";
 import {
   Block,
   HandleAddBlock,
