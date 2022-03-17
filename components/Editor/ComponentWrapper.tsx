@@ -11,7 +11,7 @@ import {
 } from "../../types/editor.types";
 import { ComponentMapping } from ".";
 
-import SelectComponentMenu from "./SelectComponentMenu";
+import SelectComponentMenu from "./SelectComponentMenuComp";
 
 interface ComponentWrapperProps extends Block {
   handleAddBlock: HandleAddBlock;
