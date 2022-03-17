@@ -56,10 +56,15 @@ const GridInput: React.FC<GridInputProps> = ({
     });
   };
 
+  const handleSpanChange = (index: number, value: number) => {
+    gridItems[index].span = value;
+    handleSelectedBlockChange({ gridItems });
+  };
+
   return (
     <Group direction="column" grow>
       {gridItems.map((gridItem, index) => {
-        const { block } = gridItem;
+        const { block, span } = gridItem;
         const { componentName } = block;
         const { inputs = [] } = ComponentMapping[componentName];
         return (
@@ -75,8 +80,14 @@ const GridInput: React.FC<GridInputProps> = ({
                 <AiFillDelete size={16} />
               </ActionIcon>
             </Group>
+            <NumberInput
+              label="Span"
+              value={span}
+              onChange={(value = 12) => {
+                handleSpanChange(index, value);
+              }}
+            />
 
-            {gridItem.span ? <NumberInput label="Span" /> : ""}
             <CustomInputWrapper
               handleSelectedBlockChange={handleSelectedBlockChange}
               inputs={inputs}

@@ -25,6 +25,7 @@ const AddGridItemMenu: React.FC<SelectComponentMenuProps> = ({
               props: ComponentMapping[componentName].defaultProps,
             });
           }}
+          disabled={componentName === "Grid"}
         >
           {componentName}
         </Menu.Item>
