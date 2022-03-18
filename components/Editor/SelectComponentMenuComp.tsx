@@ -1,5 +1,5 @@
 import { Menu, ActionIcon } from "@mantine/core";
-import { ComponentMapping, AllComponents } from ".";
+import { BlockComponentMapping, AllBlockNames } from ".";
 import { AiFillPlusCircle } from "react-icons/ai";
 import { HandleAddBlock } from "../../types/editor.types";
 
@@ -21,17 +21,17 @@ const SelectComponentMenu: React.FC<SelectComponentMenuProps> = ({
         </ActionIcon>
       }
     >
-      {AllComponents.map((componentName) => (
+      {AllBlockNames.map((blockName) => (
         <Menu.Item
-          key={componentName}
+          key={blockName}
           onClick={() =>
             handleAddBlock(index, {
-              componentName,
-              props: ComponentMapping[componentName].defaultProps,
+              blockName,
+              props: BlockComponentMapping[blockName].defaultProps,
             })
           }
         >
-          {componentName}
+          {blockName}
         </Menu.Item>
       ))}
     </Menu>

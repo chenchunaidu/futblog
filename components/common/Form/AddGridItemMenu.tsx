@@ -1,5 +1,5 @@
 import { Menu, Button } from "@mantine/core";
-import { ComponentMapping, AllComponents } from "../../Editor";
+import { BlockComponentMapping, AllBlockNames } from "../../Editor";
 
 import { HandleAddGridItem } from "../../../types/editor.types";
 
@@ -16,18 +16,18 @@ const AddGridItemMenu: React.FC<SelectComponentMenuProps> = ({
       position="right"
       control={<Button variant="light">Add grid item</Button>}
     >
-      {AllComponents.map((componentName) => (
+      {AllBlockNames.map((blockName) => (
         <Menu.Item
-          key={componentName}
+          key={blockName}
           onClick={() => {
             handleAddGridItem({
-              componentName,
-              props: ComponentMapping[componentName].defaultProps,
+              blockName,
+              props: BlockComponentMapping[blockName].defaultProps,
             });
           }}
-          disabled={componentName === "Grid"}
+          disabled={blockName === "Grid"}
         >
-          {componentName}
+          {blockName}
         </Menu.Item>
       ))}
     </Menu>

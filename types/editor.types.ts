@@ -1,15 +1,14 @@
 import { FormList } from "@mantine/form/lib/form-list/form-list";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
-import { ComponentMapping } from "../components/Editor";
+import { BlockComponentMapping } from "../components/Editor";
 import { GridItem } from "../components/Editor/CustomGrid";
 
 export interface StyleProps {
   [x: string]: string | number | boolean | GridItem[];
 }
 
-type componentName = keyof typeof ComponentMapping;
 export interface Block {
-  componentName: keyof typeof ComponentMapping;
+  blockName: keyof typeof BlockComponentMapping;
   props?: StyleProps;
 }
 

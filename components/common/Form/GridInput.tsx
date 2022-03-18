@@ -5,7 +5,7 @@ import {
   HandleSelectedBlockChange,
   StyleProps,
 } from "../../../types/editor.types";
-import { ComponentMapping } from "../../Editor";
+import { BlockComponentMapping } from "../../Editor";
 import { GridItem } from "../../Editor/CustomGrid";
 import CustomInputWrapper from "./InputWrapper";
 import AddGridItemMenu from "./AddGridItemMenu";
@@ -65,8 +65,8 @@ const GridInput: React.FC<GridInputProps> = ({
     <Group direction="column" grow>
       {gridItems.map((gridItem, index) => {
         const { block, span } = gridItem;
-        const { componentName } = block;
-        const { inputs = [] } = ComponentMapping[componentName];
+        const { blockName } = block;
+        const { inputs = [] } = BlockComponentMapping[blockName];
         return (
           <Group key={index} direction="column" grow>
             <Group position="apart">
