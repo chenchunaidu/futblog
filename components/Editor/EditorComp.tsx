@@ -13,11 +13,12 @@ import { BlockPropsInputGroup } from "../common/Form";
 
 import BlockWrapper from "./BlockWrapper";
 import { BlockComponentMapping, defaultBlock } from ".";
+import cloneDeep from "lodash.clonedeep";
 
 const EditorComp = () => {
   const [editorState, setEditorState] = useLocalStorageValue<Block[]>({
     key: "editorState",
-    defaultValue: [defaultBlock],
+    defaultValue: [cloneDeep(defaultBlock)],
   });
   const [selectedBlockIndex, setSelectedBlockIndex] = React.useState<
     number | null
