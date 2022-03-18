@@ -30,6 +30,7 @@ const EditorComp = () => {
 
   const handleAddBlock: HandleAddBlock = (index, block = defaultBlock) => {
     const currentEditorState = [...editorState];
+    block.props = { ...block.props };
     currentEditorState.splice(index + 1, 0, block);
     setEditorState(currentEditorState);
   };
