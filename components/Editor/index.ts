@@ -1,12 +1,4 @@
-import {
-  Heading1Block,
-  Heading2Block,
-  Heading3Block,
-  Heading4Block,
-  Heading5Block,
-  Heading6Block,
-  CustomTextBlock,
-} from "./CustomText";
+import { CustomTextBlock, CustomTitleBlock } from "./CustomText";
 import { CustomBackgroundImageBlock } from "./CustomBackgroundImage";
 import { CustomImageBlock } from "./CustomImage";
 import { Block } from "../../types/editor.types";
@@ -19,13 +11,7 @@ import { CustomPrismCodeBlock } from "./CustomPrismCode";
 import { CustomDividerBlock } from "./CustomDivider";
 
 export const BlockComponentMapping = {
-  "Heading 1": Heading1Block as ComponentBlockProps,
-  "Heading 2": Heading2Block as ComponentBlockProps,
-  "Heading 3": Heading3Block as ComponentBlockProps,
-  "Heading 4": Heading4Block as ComponentBlockProps,
-  "Heading 5": Heading5Block as ComponentBlockProps,
-  "Heading 6": Heading6Block as ComponentBlockProps,
-  "Inline Code": CustomInlineCodeBlock as ComponentBlockProps,
+  Title: CustomTitleBlock as ComponentBlockProps,
   Text: CustomTextBlock as ComponentBlockProps,
   Image: CustomImageBlock as ComponentBlockProps,
   "Background Image": CustomBackgroundImageBlock as ComponentBlockProps,
@@ -33,6 +19,7 @@ export const BlockComponentMapping = {
   List: CustomListBlock as ComponentBlockProps,
   Grid: CustomGridBlock,
   Code: CustomPrismCodeBlock as ComponentBlockProps,
+  "Inline Code": CustomInlineCodeBlock as ComponentBlockProps,
   Divider: CustomDividerBlock as ComponentBlockProps,
 };
 
