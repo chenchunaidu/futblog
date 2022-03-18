@@ -9,21 +9,12 @@ import {
 } from "./CustomText";
 import { CustomBackgroundImageBlock } from "./CustomBackgroundImage";
 import { CustomImageBlock } from "./CustomImage";
-import { Block, StyleProps } from "../../types/editor.types";
+import { Block } from "../../types/editor.types";
 import { CustomInlineCodeBlock } from "./CustomInlineCode";
 import { CustomQuoteBlock } from "./CustomQuote";
 import { CustomListBlock } from "./CustomList";
 import { CustomGridBlock } from "./CustomGrid";
-import React from "react";
-import { CustomInputProps } from "../common/Form";
-
-interface ComponentBlockProps {
-  component: React.FC;
-  defaultProps: StyleProps;
-  inputs: CustomInputProps[];
-}
-
-export type { ComponentBlockProps };
+import { ComponentBlockProps } from "../../types/editor.types";
 
 export const BlockComponentMapping = {
   "Heading 1": Heading1Block as ComponentBlockProps,

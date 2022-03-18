@@ -9,7 +9,7 @@ import {
 import React from "react";
 import { Box, Grid, Paper } from "@mantine/core";
 import { useLocalStorageValue } from "@mantine/hooks";
-import { RenderGroupInput } from "../common/Form";
+import { BlockPropsInputGroup } from "../common/Form";
 
 import BlockWrapper from "./BlockWrapper";
 import { BlockComponentMapping, defaultBlock } from ".";
@@ -86,7 +86,7 @@ const EditorComp = () => {
       </Grid.Col>
       <Grid.Col span={3}>
         <Paper shadow="xl" sx={{ height: "95vh", overflow: "scroll" }} p="lg">
-          <RenderGroupInput
+          <BlockPropsInputGroup
             props={selectedBlock?.props || {}}
             handleSelectedBlockChange={handleSelectedBlockChange}
             inputs={

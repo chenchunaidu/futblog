@@ -3,7 +3,8 @@ import { Grid } from "@mantine/core";
 import { Block } from "../../types/editor.types";
 import { BlockComponentMapping } from ".";
 import { CustomTextBlock } from "./CustomText";
-import type { ComponentBlockProps } from "./index";
+
+import type { ComponentBlockProps } from "../../types/editor.types";
 
 export interface GridItem {
   span?: number;

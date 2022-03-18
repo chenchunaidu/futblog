@@ -3,11 +3,11 @@ import React from "react";
 import {
   HandleAddGridItem,
   HandleSelectedBlockChange,
-  StyleProps,
+  HandleGridItemChange,
 } from "../../../types/editor.types";
 import { BlockComponentMapping } from "../../Editor";
 import { GridItem } from "../../Editor/CustomGrid";
-import CustomInputWrapper from "./InputWrapper";
+import BlockPropsInputWrapper from "./BlockPropsInputWrapper";
 import AddGridItemMenu from "./AddGridItemMenu";
 import { AiFillDelete } from "react-icons/ai";
 
@@ -19,19 +19,12 @@ interface GridInputProps {
 
 const GridInput: React.FC<GridInputProps> = ({
   gridItems,
-  onChange,
   handleSelectedBlockChange,
 }) => {
-  const handleChange = (
-    label: string,
-    value:
-      | string
-      | number
-      | boolean
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-      | undefined,
-    props: StyleProps = {}
+  const handleGridItemChange: HandleGridItemChange = (
+    label,
+    value,
+    props = {}
   ) => {
     if (value)
       if (
@@ -88,12 +81,12 @@ const GridInput: React.FC<GridInputProps> = ({
               }}
             />
 
-            <CustomInputWrapper
+            <BlockPropsInputWrapper
               handleSelectedBlockChange={handleSelectedBlockChange}
               inputs={inputs}
               props={block.props || {}}
-              handleInputChange={(label, value) =>
-                handleChange(label, value, block?.props)
+              handleBlockPropsChange={(label, value) =>
+                handleGridItemChange(label, value, block?.props)
               }
             />
           </Group>

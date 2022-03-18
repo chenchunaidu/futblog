@@ -10,11 +10,13 @@ import {
 } from "@mantine/core";
 import React from "react";
 import {
+  HandleBlockPropsChange,
   HandleSelectedBlockChange,
-  StyleProps,
+  BlockProps,
+  BlockPropsInput,
 } from "../../../types/editor.types";
 import GridInput from "./GridInput";
-import CustomInputWrapper from "./InputWrapper";
+import BlockPropsInputWrapper from "./BlockPropsInputWrapper";
 
 export const inputComponentMapping = {
   text: TextInput,
@@ -26,34 +28,18 @@ export const inputComponentMapping = {
   grid: GridInput,
 };
 
-export interface CustomInputProps {
-  type: keyof typeof inputComponentMapping;
-  options?: (string | SelectItem)[];
-  label?: string;
-  name: string;
-}
-
-interface RenderGroupInputProps {
-  inputs: CustomInputProps[];
-  props: StyleProps;
+interface BlockPropsInputGroupProps {
+  inputs: BlockPropsInput[];
+  props: BlockProps;
   handleSelectedBlockChange: HandleSelectedBlockChange;
 }
 
-export const RenderGroupInput: React.FC<RenderGroupInputProps> = ({
+export const BlockPropsInputGroup: React.FC<BlockPropsInputGroupProps> = ({
   inputs,
   props,
   handleSelectedBlockChange,
 }) => {
-  const handleChange = (
-    label: string,
-    value:
-      | string
-      | number
-      | boolean
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-      | undefined
-  ) => {
+  const handleBlockPropsChange: HandleBlockPropsChange = (label, value) => {
     if (value)
       if (
         typeof value === "string" ||
@@ -69,11 +55,11 @@ export const RenderGroupInput: React.FC<RenderGroupInputProps> = ({
 
   return (
     <Group direction="column" grow>
-      <CustomInputWrapper
+      <BlockPropsInputWrapper
         inputs={inputs}
         handleSelectedBlockChange={handleSelectedBlockChange}
         props={props}
-        handleInputChange={handleChange}
+        handleBlockPropsChange={handleBlockPropsChange}
       />
     </Group>
   );
