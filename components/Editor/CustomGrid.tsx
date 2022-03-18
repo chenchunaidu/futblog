@@ -1,9 +1,10 @@
 import React from "react";
 import { Grid } from "@mantine/core";
 import { Block } from "../../types/editor.types";
-import { ComponentMapping } from ".";
+import { BlockComponentMapping } from ".";
 import { CustomTextBlock } from "./CustomText";
-import type { CustomBlockProps } from "./index";
+
+import type { ComponentBlockProps } from "../../types/editor.types";
 
 export interface GridItem {
   span?: number;
@@ -23,8 +24,8 @@ const CustomGrid: React.FC<CustomGridProps> = ({ gridItems = [] }) => {
   return (
     <Grid>
       {gridItems?.map(({ span = defaultSpan, block }, index) => {
-        const { componentName, props = {} } = block || {};
-        const { component: Component } = ComponentMapping[componentName] || {};
+        const { blockName, props = {} } = block || {};
+        const { component: Component } = BlockComponentMapping[blockName] || {};
 
         if (Component) {
           return (
@@ -41,19 +42,19 @@ const CustomGrid: React.FC<CustomGridProps> = ({ gridItems = [] }) => {
 
 export default CustomGrid;
 
-export const CustomGridBlock: CustomBlockProps = {
+export const CustomGridBlock: ComponentBlockProps = {
   component: CustomGrid,
   defaultProps: {
     gridItems: [
       {
         block: {
-          componentName: "Text",
+          blockName: "Text",
           props: CustomTextBlock.defaultProps,
         },
       },
       {
         block: {
-          componentName: "Text",
+          blockName: "Text",
           props: CustomTextBlock.defaultProps,
         },
       },

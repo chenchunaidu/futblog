@@ -9,10 +9,10 @@ import {
 import React from "react";
 import { Box, Grid, Paper } from "@mantine/core";
 import { useLocalStorageValue } from "@mantine/hooks";
-import { RenderGroupInput } from "../common/Form";
+import { BlockPropsInputGroup } from "../common/Form";
 
-import ComponentWrapper from "./ComponentWrapper";
-import { ComponentMapping, defaultBlock } from ".";
+import BlockWrapper from "./BlockWrapper";
+import { BlockComponentMapping, defaultBlock } from ".";
 
 const EditorComp = () => {
   const [editorState, setEditorState] = useLocalStorageValue<Block[]>({
@@ -72,7 +72,7 @@ const EditorComp = () => {
           }}
         >
           {editorState?.map((block, index) => (
-            <ComponentWrapper
+            <BlockWrapper
               key={index}
               {...block}
               index={index}
@@ -87,12 +87,12 @@ const EditorComp = () => {
       </Grid.Col>
       <Grid.Col span={3}>
         <Paper shadow="xl" sx={{ height: "95vh", overflow: "scroll" }} p="lg">
-          <RenderGroupInput
+          <BlockPropsInputGroup
             props={selectedBlock?.props || {}}
             handleSelectedBlockChange={handleSelectedBlockChange}
             inputs={
-              (selectedBlock?.componentName &&
-                ComponentMapping[selectedBlock?.componentName]?.inputs) ||
+              (selectedBlock?.blockName &&
+                BlockComponentMapping[selectedBlock?.blockName]?.inputs) ||
               []
             }
           />

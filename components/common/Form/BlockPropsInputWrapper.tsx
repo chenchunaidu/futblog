@@ -1,30 +1,22 @@
 import React from "react";
-import { CustomInputProps } from ".";
 import {
+  HandleBlockPropsChange,
   HandleSelectedBlockChange,
-  StyleProps,
+  BlockProps,
+  BlockPropsInput,
 } from "../../../types/editor.types";
 import { inputComponentMapping } from ".";
-interface CustomInputWrapperProps {
-  inputs: CustomInputProps[];
-  props: StyleProps;
-  handleInputChange: (
-    label: string,
-    value:
-      | string
-      | number
-      | boolean
-      | React.ChangeEvent<HTMLInputElement>
-      | React.ChangeEvent<HTMLTextAreaElement>
-      | undefined
-  ) => void;
+interface BlockPropsInputWrapperProps {
+  inputs: BlockPropsInput[];
+  props: BlockProps;
+  handleBlockPropsChange: HandleBlockPropsChange;
   handleSelectedBlockChange: HandleSelectedBlockChange;
 }
 
-const CustomInputWrapper: React.FC<CustomInputWrapperProps> = ({
+const BlockPropsInputWrapper: React.FC<BlockPropsInputWrapperProps> = ({
   inputs,
   props,
-  handleInputChange: handleChange,
+  handleBlockPropsChange,
   handleSelectedBlockChange,
 }) => {
   return (
@@ -56,7 +48,9 @@ const CustomInputWrapper: React.FC<CustomInputWrapperProps> = ({
               key={index}
               label={label}
               checked={value}
-              onChange={(e) => handleChange(name, e?.currentTarget?.checked)}
+              onChange={(e) =>
+                handleBlockPropsChange(name, e?.currentTarget?.checked)
+              }
             />
           );
         }
@@ -71,7 +65,7 @@ const CustomInputWrapper: React.FC<CustomInputWrapperProps> = ({
               key={index}
               label={label}
               value={value}
-              onChange={(e) => handleChange(name, e)}
+              onChange={(e) => handleBlockPropsChange(name, e)}
             />
           );
         }
@@ -83,7 +77,7 @@ const CustomInputWrapper: React.FC<CustomInputWrapperProps> = ({
               key={index}
               label={label}
               value={value}
-              onChange={(e) => handleChange(name, e)}
+              onChange={(e) => handleBlockPropsChange(name, e)}
             />
           );
         }
@@ -92,4 +86,4 @@ const CustomInputWrapper: React.FC<CustomInputWrapperProps> = ({
   );
 };
 
-export default CustomInputWrapper;
+export default BlockPropsInputWrapper;

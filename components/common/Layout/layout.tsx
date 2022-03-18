@@ -1,5 +1,4 @@
-import { AppShell, Header } from "@mantine/core";
-import NavbarSearch from "./nav";
+import { AppShell } from "@mantine/core";
 
 interface LayoutProps {
   children: React.ReactNode;

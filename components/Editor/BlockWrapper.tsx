@@ -9,11 +9,11 @@ import {
   HandleDuplicateBlock,
   HandleSelectBlock,
 } from "../../types/editor.types";
-import { ComponentMapping } from ".";
+import { BlockComponentMapping } from ".";
 
 import SelectComponentMenu from "./SelectComponentMenuComp";
 
-interface ComponentWrapperProps extends Block {
+interface BlockWrapperProps extends Block {
   handleAddBlock: HandleAddBlock;
   handleDeleteBlock: HandleDeleteBlock;
   handleDuplicateBlock: HandleDuplicateBlock;
@@ -22,17 +22,17 @@ interface ComponentWrapperProps extends Block {
   selectedBlockIndex: number | null;
 }
 
-const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
+const BlockWrapper: React.FC<BlockWrapperProps> = ({
   handleAddBlock,
   handleDeleteBlock,
   handleDuplicateBlock,
   handleSelectBlock,
   index,
-  componentName,
+  blockName,
   props = {},
   selectedBlockIndex,
 }) => {
-  const Component = ComponentMapping[componentName].component;
+  const Component = BlockComponentMapping[blockName].component;
   const [hovered, setHovered] = React.useState<boolean>(false);
 
   const isSelected = selectedBlockIndex === index;
@@ -80,4 +80,4 @@ const ComponentWrapper: React.FC<ComponentWrapperProps> = ({
   );
 };
 
-export default ComponentWrapper;
+export default BlockWrapper;
