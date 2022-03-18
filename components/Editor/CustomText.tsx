@@ -5,43 +5,17 @@ export const CustomTitleBlock = {
   defaultProps: { children: "Title", order: 1 },
   inputs: [
     { type: "textarea", label: "Content", name: "children" },
-    { type: "number", label: "Order", name: "order" },
+    { type: "titleOrderSelect", label: "Order", name: "order" },
   ],
-};
-
-export const Heading1Block = {
-  component: Title,
-  defaultProps: { children: "Title", order: 1 },
-  inputs: CustomTitleBlock.inputs,
-};
-export const Heading2Block = {
-  component: Title,
-  defaultProps: { children: "Title", order: 2 },
-  inputs: CustomTitleBlock.inputs,
-};
-export const Heading3Block = {
-  component: Title,
-  defaultProps: { children: "Title", order: 3 },
-  inputs: CustomTitleBlock.inputs,
-};
-export const Heading4Block = {
-  component: Title,
-  defaultProps: { children: "Title", order: 4 },
-  inputs: CustomTitleBlock.inputs,
-};
-export const Heading5Block = {
-  component: Title,
-  defaultProps: { children: "Title", order: 5 },
-  inputs: CustomTitleBlock.inputs,
-};
-export const Heading6Block = {
-  component: Title,
-  defaultProps: { children: "Title", order: 6 },
-  inputs: CustomTitleBlock.inputs,
 };
 
 export const CustomTextBlock = {
   component: Text,
-  defaultProps: { children: "Text" },
-  inputs: [{ type: "textarea", label: "Content", name: "children" }],
+  defaultProps: { children: "Text", weight: "normal" },
+  inputs: [
+    { type: "textarea", label: "Content", name: "children" },
+    { type: "fontWeightSelect", label: "Font weight", name: "weight" },
+    { type: "fontSizeSelect", label: "Font size", name: "size" },
+    { type: "color", label: "Color", name: "color" },
+  ],
 };

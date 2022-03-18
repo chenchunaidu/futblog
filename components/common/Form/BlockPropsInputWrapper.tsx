@@ -22,7 +22,7 @@ const BlockPropsInputWrapper: React.FC<BlockPropsInputWrapperProps> = ({
   return (
     <>
       {inputs.map(({ type, name, label, options = [] }, index) => {
-        const value = props[name];
+        let value = props[name];
         if (type === "grid" && typeof value === "object") {
           const InputComponent = inputComponentMapping[type];
           return (
@@ -35,13 +35,46 @@ const BlockPropsInputWrapper: React.FC<BlockPropsInputWrapperProps> = ({
           );
         }
 
-        if (type === "select") {
-          if (typeof value === "string") {
+        if (
+          type === "select" ||
+          type === "fontWeightSelect" ||
+          type === "fontSizeSelect"
+        ) {
+          if (typeof value === "string" || typeof value === "undefined") {
             const InputComponent = inputComponentMapping[type];
-            return <InputComponent key={index} data={options} value={value} />;
+            return (
+              <InputComponent
+                key={index}
+                label={label}
+                data={options}
+                value={value}
+                onChange={(e) => handleBlockPropsChange(name, e || "")}
+              />
+            );
           }
         }
-        if (type === "switch" && typeof value === "boolean") {
+
+        if (type === "select" || type === "titleOrderSelect") {
+          if (typeof value === "number" || typeof value === "undefined") {
+            const InputComponent = inputComponentMapping[type];
+            value = value.toString();
+            return (
+              <InputComponent
+                key={index}
+                label={label}
+                data={options}
+                value={value}
+                onChange={(e) =>
+                  handleBlockPropsChange(name, e ? parseInt(e) : 0)
+                }
+              />
+            );
+          }
+        }
+        if (
+          type === "switch" &&
+          (typeof value === "boolean" || typeof value === "undefined")
+        ) {
           const InputComponent = inputComponentMapping[type];
           return (
             <InputComponent
@@ -57,20 +90,23 @@ const BlockPropsInputWrapper: React.FC<BlockPropsInputWrapperProps> = ({
 
         if (
           (type === "text" || type === "textarea" || type === "color") &&
-          typeof value === "string"
+          (typeof value === "string" || typeof value === "undefined")
         ) {
           const InputComponent = inputComponentMapping[type];
           return (
             <InputComponent
               key={index}
-              label={label}
+              label={label || ""}
               value={value}
               onChange={(e) => handleBlockPropsChange(name, e)}
             />
           );
         }
 
-        if (type === "number" && typeof value === "number") {
+        if (
+          type === "number" &&
+          (typeof value === "number" || typeof value === "undefined")
+        ) {
           const InputComponent = inputComponentMapping[type];
           return (
             <InputComponent

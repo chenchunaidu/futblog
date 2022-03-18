@@ -1,21 +1,21 @@
 import { Select } from "@mantine/core";
 import React from "react";
-import { fontWeightOptions } from "./data";
+import { titleOrderOptions } from "./data";
 
-interface FontWeightSelectProps {
+interface TitleOrderSelectProps {
   value: string;
   onChange?: (e: string | null) => void;
   label?: string;
 }
 
-const FontWeightSelect: React.FC<FontWeightSelectProps> = ({
+const TitleOrderSelect: React.FC<TitleOrderSelectProps> = ({
   value,
   onChange,
   label,
 }) => {
   return (
     <Select
-      data={fontWeightOptions}
+      data={titleOrderOptions}
       label={label}
       value={value}
       onChange={onChange}
@@ -23,4 +23,4 @@ const FontWeightSelect: React.FC<FontWeightSelectProps> = ({
   );
 };
 
-export default FontWeightSelect;
+export default TitleOrderSelect;

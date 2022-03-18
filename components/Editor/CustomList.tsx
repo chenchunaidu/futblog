@@ -1,7 +1,6 @@
 import { List } from "@mantine/core";
 
 interface CustomListProps {
-  // listItems: ListItem[];
   listItems?: string;
 }
 

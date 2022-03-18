@@ -16,15 +16,22 @@ import {
 } from "../../../types/editor.types";
 import GridInput from "./GridInput";
 import BlockPropsInputWrapper from "./BlockPropsInputWrapper";
+import FontWeightSelect from "./FontWeightSelect";
+import FontSizeSelect from "./FontSizeSelect";
+import { ColorControl } from "./CustomColorSwatch";
+import TitleOrderSelect from "./TitleOrderSelect";
 
 export const inputComponentMapping = {
   text: TextInput,
   number: NumberInput,
   select: Select,
   switch: Switch,
-  color: ColorInput,
+  color: ColorControl,
   textarea: Textarea,
   grid: GridInput,
+  fontWeightSelect: FontWeightSelect,
+  fontSizeSelect: FontSizeSelect,
+  titleOrderSelect: TitleOrderSelect,
 };
 
 interface BlockPropsInputGroupProps {
