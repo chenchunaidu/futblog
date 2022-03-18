@@ -6,7 +6,6 @@ import {
   ColorInput,
   Textarea,
   Group,
-  SelectItem,
 } from "@mantine/core";
 import React from "react";
 import {
