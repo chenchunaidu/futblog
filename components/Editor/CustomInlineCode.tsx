@@ -18,7 +18,6 @@ export const CustomInlineCodeBlock = {
   defaultProps: {
     children: "React.createElement()",
     block: true,
-    color: "red",
   },
-  inputs: [],
+  inputs: [{ type: "textarea", label: "Code", name: "children" }],
 };
