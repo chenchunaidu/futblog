@@ -56,7 +56,7 @@ const BlockPropsInputWrapper: React.FC<BlockPropsInputWrapperProps> = ({
         }
 
         if (
-          (type === "text" || type === "textarea") &&
+          (type === "text" || type === "textarea" || type === "color") &&
           typeof value === "string"
         ) {
           const InputComponent = inputComponentMapping[type];
