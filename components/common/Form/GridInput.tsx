@@ -1,5 +1,6 @@
 import { Group, Text, NumberInput, ActionIcon } from "@mantine/core";
 import React from "react";
+import cloneDeep from "lodash.clonedeep";
 import {
   HandleAddGridItem,
   HandleSelectedBlockChange,
@@ -40,7 +41,9 @@ const GridInput: React.FC<GridInputProps> = ({
   };
 
   const handleAddGridItem: HandleAddGridItem = (block) => {
-    handleSelectedBlockChange({ gridItems: [...gridItems, { block }] });
+    handleSelectedBlockChange({
+      gridItems: [...gridItems, { block: cloneDeep(block) }],
+    });
   };
 
   const handleDeleteGridItem = (indexToDelete: number) => {
