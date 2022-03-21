@@ -1,5 +1,6 @@
 import React from "react";
 import { Grid } from "@mantine/core";
+import cloneDeep from "lodash.clonedeep";
 import { Block } from "../../types/editor.types";
 import { BlockComponentMapping } from ".";
 import { CustomTextBlock } from "./CustomText";
@@ -49,13 +50,13 @@ export const CustomGridBlock: ComponentBlockProps = {
       {
         block: {
           blockName: "Text",
-          props: CustomTextBlock.defaultProps,
+          props: cloneDeep(CustomTextBlock.defaultProps),
         },
       },
       {
         block: {
           blockName: "Text",
-          props: CustomTextBlock.defaultProps,
+          props: cloneDeep(CustomTextBlock.defaultProps),
         },
       },
     ],
