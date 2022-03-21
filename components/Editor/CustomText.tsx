@@ -1,7 +1,30 @@
-import { Title, Text } from "@mantine/core";
+import { Title, Text, TextProps, TitleProps } from "@mantine/core";
+import { ContentEditableProps } from "../../types/editor.types";
+
+export type CustomTextProps = TextProps<"div">;
+const CustomText: React.FC<CustomTextProps> = (props) => {
+  return (
+    <Text
+      {...props}
+      contentEditable="true"
+      suppressContentEditableWarning={true}
+    ></Text>
+  );
+};
+
+export type CustomTitleProps = TitleProps;
+const CustomTitle: React.FC<CustomTitleProps> = (props) => {
+  return (
+    <Title
+      contentEditable="true"
+      {...props}
+      suppressContentEditableWarning={true}
+    ></Title>
+  );
+};
 
 export const CustomTitleBlock = {
-  component: Title,
+  component: CustomTitle,
   defaultProps: { children: "Title", order: 1 },
   inputs: [
     { type: "textarea", label: "Content", name: "children" },
@@ -10,7 +33,7 @@ export const CustomTitleBlock = {
 };
 
 export const CustomTextBlock = {
-  component: Text,
+  component: CustomText,
   defaultProps: { children: "Text", weight: "normal" },
   inputs: [
     { type: "textarea", label: "Content", name: "children" },

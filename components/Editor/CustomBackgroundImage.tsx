@@ -8,6 +8,7 @@ import {
   MantineSize,
 } from "@mantine/core";
 import React from "react";
+import { useElementSize } from "@mantine/hooks";
 
 interface CustomBackgroundImageProps {
   size?: MantineNumberSize;
@@ -29,11 +30,19 @@ export const CustomBackgroundImage: React.FC<CustomBackgroundImageProps> = ({
   fontWeight,
   fontSize,
 }) => {
+  const { ref, width: elementWidth, height: elementHeight } = useElementSize();
+  console.log(elementHeight, elementWidth);
   return (
-    <Box sx={{ width }} mx="auto">
+    <Box sx={{ width, resize: "both" }} mx="auto" ref={ref}>
       <BackgroundImage src={imageUrl} radius="sm">
         <Center p="md" sx={{ height }}>
-          <Text color={textColor} weight={fontWeight} size={fontSize}>
+          <Text
+            color={textColor}
+            weight={fontWeight}
+            size={fontSize}
+            contentEditable="true"
+            suppressContentEditableWarning={true}
+          >
             {content}
           </Text>
         </Center>

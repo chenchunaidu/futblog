@@ -3,15 +3,25 @@ import { FormList } from "@mantine/form/lib/form-list/form-list";
 import { UseFormReturnType } from "@mantine/form/lib/use-form";
 import { inputComponentMapping } from "../components/common/Form";
 import { BlockComponentMapping } from "../components/Editor";
-import { GridItem } from "../components/Editor/CustomGrid";
+
+export interface ContentEditableProps {
+  contentEditable: string;
+  suppressContentEditableWarning: boolean;
+}
 
 export interface BlockProps {
-  [x: string]: string | number | boolean | GridItem[];
+  [x: string]: string | number | boolean;
+}
+
+export interface BlockStyles {
+  [x: string]: string;
 }
 
 export interface Block {
+  id: string;
   blockName: keyof typeof BlockComponentMapping;
-  props?: BlockProps;
+  props: BlockProps;
+  children: Block[];
 }
 
 export interface EditorFormInput {

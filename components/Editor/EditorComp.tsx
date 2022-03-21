@@ -1,105 +1,53 @@
-import {
-  Block,
-  HandleAddBlock,
-  HandleDeleteBlock,
-  HandleDuplicateBlock,
-  HandleSelectBlock,
-  HandleSelectedBlockChange,
-} from "../../types/editor.types";
+import { Block } from "../../types/editor.types";
 import React from "react";
-import { Box, Grid, Paper } from "@mantine/core";
 import { useLocalStorageValue } from "@mantine/hooks";
-import { BlockPropsInputGroup } from "../common/Form";
 
-import BlockWrapper from "./BlockWrapper";
-import { BlockComponentMapping, defaultBlock } from ".";
+import { defaultBlock } from ".";
 import cloneDeep from "lodash.clonedeep";
+import { Group } from "@mantine/core";
+import BlockWrapper from "./BlockWrapper";
+import { nanoid } from "nanoid";
 
 const EditorComp = () => {
   const [editorState, setEditorState] = useLocalStorageValue<Block[]>({
     key: "editorState",
-    defaultValue: [cloneDeep(defaultBlock)],
+    defaultValue: [
+      {
+        children: [],
+        id: nanoid(),
+        blockName: "Text",
+        props: { children: "Some text" },
+      },
+      {
+        children: [],
+        id: nanoid(),
+        blockName: "Title",
+        props: { children: "Some text", order: 1 },
+      },
+      {
+        children: [],
+        id: nanoid(),
+        blockName: "Background Image",
+        props: {
+          content: `Building large scale applications using react`,
+          imageUrl:
+            "https://bs-uploads.toptal.io/blackfish-uploads/components/seo/content/og_image_file/og_image/777655/react-context-api-4929b3703a1a7082d99b53eb1bbfc31f.png",
+          textColor: "white",
+          fontWeight: "bold",
+          width: "100%",
+          fontSize: "md",
+          height: "500px",
+        },
+      },
+    ],
   });
-  const [selectedBlockIndex, setSelectedBlockIndex] = React.useState<
-    number | null
-  >(null);
-
-  const selectedBlock =
-    selectedBlockIndex || selectedBlockIndex === 0
-      ? editorState[selectedBlockIndex]
-      : null;
-
-  const handleAddBlock: HandleAddBlock = (index, block = defaultBlock) => {
-    const currentEditorState = [...editorState];
-    block.props = { ...block.props };
-    currentEditorState.splice(index + 1, 0, block);
-    setEditorState(currentEditorState);
-  };
-
-  const handleDeleteBlock: HandleDeleteBlock = (indexToDelete) => {
-    if (editorState.length > 1) {
-      setEditorState(
-        editorState.filter((block, index) => index !== indexToDelete)
-      );
-    }
-  };
-
-  const handleDuplicateBlock: HandleDuplicateBlock = (index) => {
-    const blockToCopy = editorState[index];
-    handleAddBlock(index, { ...blockToCopy });
-  };
-
-  const handleSelectBlock: HandleSelectBlock = (index) => {
-    setSelectedBlockIndex(index);
-  };
-
-  const handleSelectedBlockChange: HandleSelectedBlockChange = (props) => {
-    if (selectedBlock && (selectedBlockIndex || selectedBlockIndex == 0)) {
-      const currentEditorState = editorState;
-      currentEditorState[selectedBlockIndex].props = props;
-      setEditorState([...currentEditorState]);
-    }
-  };
 
   return (
-    <Grid>
-      <Grid.Col span={9}>
-        <Box
-          sx={{
-            display: "flex",
-            flexDirection: "column",
-            overflow: "scroll",
-            height: "95vh",
-          }}
-        >
-          {editorState?.map((block, index) => (
-            <BlockWrapper
-              key={index}
-              {...block}
-              index={index}
-              handleAddBlock={handleAddBlock}
-              handleDeleteBlock={handleDeleteBlock}
-              handleDuplicateBlock={handleDuplicateBlock}
-              handleSelectBlock={handleSelectBlock}
-              selectedBlockIndex={selectedBlockIndex}
-            />
-          ))}
-        </Box>
-      </Grid.Col>
-      <Grid.Col span={3}>
-        <Paper shadow="xl" sx={{ height: "95vh", overflow: "scroll" }} p="lg">
-          <BlockPropsInputGroup
-            props={selectedBlock?.props || {}}
-            handleSelectedBlockChange={handleSelectedBlockChange}
-            inputs={
-              (selectedBlock?.blockName &&
-                BlockComponentMapping[selectedBlock?.blockName]?.inputs) ||
-              []
-            }
-          />
-        </Paper>
-      </Grid.Col>
-    </Grid>
+    <Group direction="column">
+      {editorState.map((block) => (
+        <BlockWrapper key={block.id} block={block} />
+      ))}
+    </Group>
   );
 };
 
