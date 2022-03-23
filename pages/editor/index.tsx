@@ -1,5 +1,6 @@
 import React from "react";
+import Editor from "../../components/Editor";
 
-export default function Editor() {
-  return <div>Editor</div>;
+export default function EditorPage() {
+  return <Editor />;
 }
